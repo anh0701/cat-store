@@ -54,49 +54,84 @@ php artisan serve
 -   định hướng url path
 -   khai báo router trong routes/web.php,....
 
-    1. router web (web.php)
+        1. router web (web.php)
 
-    -   phương thức get
-        **_Route::get('/', function () {
-        return view('welcome');
-        });_**
-    -   phương thức post
-        **_Route::post('/', function () {
-        return view('welcome');
-        });_**
-    -   phương thức put  
-        **_Route::put('/', function () {
-        return view('welcome');
-        });_**
-    -   phương thức patch
-        Route::patch('/', function () {
-        return view('welcome');
-        });
-    -   phương thức delete
-        **_Route::delete('/', function () {
-        return view('welcome');
-        });_**
-    -   phương thức options
-        **_Route::options('/', function () {
-        return view('welcome');
-        });_**
-    -   với nhiều phương thức được khai báo trong mảng method
-        **_Route::match($method, $path, function () {
-        return view('welcome');
-        });_**
-    -   tất cả các phương thức  
-        **_Route::any('/', function () {
-        return view('welcome');
-        });_**
+        -   phương thức get
+            **_Route::get('/', function () {
+            return view('welcome');
+            });_**
+        -   phương thức post
+            **_Route::post('/', function () {
+            return view('welcome');
+            });_**
+        -   phương thức put
+            **_Route::put('/', function () {
+            return view('welcome');
+            });_**
+        -   phương thức patch
+            Route::patch('/', function () {
+            return view('welcome');
+            });
+        -   phương thức delete
+            **_Route::delete('/', function () {
+            return view('welcome');
+            });_**
+        -   phương thức options
+            **_Route::options('/', function () {
+            return view('welcome');
+            });_**
+        -   với nhiều phương thức được khai báo trong mảng method
+            **_Route::match($method, $path, function () {
+            return view('welcome');
+            });_**
+        -   tất cả các phương thức
+            **_Route::any('/', function () {
+            return view('welcome');
+            });_**
 
-    2. direct web php
+        2. direct web php
 
-    -   chuyển hướng trang web: **_Route::redirect('Uri bắt đầu', 'uri đích', mã lỗi nếu có);_**
-    -   **_Route::view('URI', 'viewName'); // tương tự phương thức get_**
-    -   gộp nhóm: **_Route::prefix('admin')->group(function () {
-        Route::get('/users', function () {
-        // Matches The "/admin/users" URL
-        });
-        });_**
+        -   chuyển hướng trang web: **_Route::redirect('Uri bắt đầu', 'uri đích', mã lỗi nếu có);_**
+        -   **_Route::view('URI', 'viewName'); // tương tự phương thức get_**
+        -   gộp nhóm(cach go nhanh trong vsc sd extension: route :: group): **_Route::prefix('admin')->group(function () {
+            Route::get('/users', function () {
+            // Matches The "/admin/users" URL
+            });
+            });_**
+        -   id tu tang (nếu muốn id có thể có hoặc không thì ghi là {id?}) : **_Route::get('home/{id}', function($id){
+            $content = "phuong thuc voi tham so: ";
+            $content.= 'id = '.$id;
+            return $content;
+            }); _**
+        -   validate duong dan(flag la chuỗi đến dấu - cuối cùng, id là số cuối cùng đường dẫn):
+             **_ Route::get('home/{flag}-{id}', function($flag, $id){
+                $content = "phuong thuc voi tham so: ";
+                $content.= 'id = '.$id.'<br/>';
+            $content.= 'flag = '.$flag;
+            return $content;
+            })->where([
+            'flag' => '.+',
+            'id' => '[0-9]+'
+            ]);_**
+        - ***Route::prefix('products')->group(function () {
+        Route::get('show-form', function(){
+            return view('form');;
+        })->name('products.show-form');
+        // đặt tên show form của products
+        // để trên view dùng hàm: route('name mình vừa tạo') => chuyển hướng sang route đó
+        // đường dẫn được chuyển đến sẽ là http://127.0.0.1:8000/products/show-form
+
+    });\*\*\*
+
+    -   middleware: terminal chạy câu lệnh: php artisan make:middleware tên*tự*đặt => 1 file trong middleware (http(app)). trong file đó viết return chuyển hướng trang, xong rồi khai báo class đó vào kernel trong https, trong web.php thì **_Route::middleware($name)->group($callback)_**, (có 1 router đặt name, để chuyển hướng trong file middleware, $name là tên class ở file middleware được khai báo ở kernel)
+    -domain: tên miền chính và phụ, khi gõ vào tên miền phụ nó sẽ nhận request callback(liên quan đến khi deploy) ***Route::domain('{subdomain}.unicode.vn')->group($callback)\*\*\*
+    -   gọi đến controller:
+
+    *   **_ Route::get('/', 'namespace của controller + action')_**:
+        ví dụ: **_Route::get('/', 'App\Http\Controllers\HomeController@index)->name('home');_**
+    *   cách 2: **_Route::get('/', [tên_controller :: class, 'tên action' ]);_** (nhớ phải use đường dẫn đến Controller, dùng từ phiên bản 8 trở lên)
+        Ví dụ: **_Route::get('/', [HomeController::class, 'getCategories']);_**
+
+-----------.-------------------------
 
 -   bôi đen chữ ấn shift + kí tự cần thêm vào đầu và cuối của đoaạn bôi đen ví dụ: (), {}, '', "",...
