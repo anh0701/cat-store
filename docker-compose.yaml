@@ -1,0 +1,12 @@
+services:
+  mysql:
+    image: mysql:8.2.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    ports:
+      - 3306:3306
+    volumes:
+      - cat-store:/var/lib/mysql
+volumes:
+  cat-store:
+    external: true
