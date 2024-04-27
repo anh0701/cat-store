@@ -23,7 +23,7 @@ curl --location 'http://localhost:8000/api/forgot-password' \
 --form 'email=""'
 
 # api verify pin
-curl --location 'http://localhost:8000/api/pin' \
+curl --location 'http://localhost:8000/api/verify/pin' \
 --form 'email=""' \
 --form 'token=""'
 
