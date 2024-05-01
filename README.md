@@ -11,3 +11,9 @@
 
 3. list api
 - in file docs/my-request.ps1
+
+4. generate migrate
+
+```sh
+    php artisan migrate:generate
+```
