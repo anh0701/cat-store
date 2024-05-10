@@ -123,6 +123,15 @@ AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
+CREATE TABLE `cat_store`.`products` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `price` FLOAT NOT NULL,
+  `image` VARCHAR(45) NULL,
+  `vote` DECIMAL(5) NULL,
+  `type` VARCHAR(45) NULL DEFAULT '\"1kg\", \"500g\", \"1.5kg\", \"2kg\", \"2.5kg\", \"3kg\"',
+  PRIMARY KEY (`id`));
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

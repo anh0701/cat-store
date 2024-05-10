@@ -15,5 +15,6 @@
 4. generate migrate
 
 ```sh
-    php artisan migrate:generate
+    php artisan migrate:generate;
+    php artisan migrate:generate --tables="table1,table2,table3,table4,table5";
 ```
