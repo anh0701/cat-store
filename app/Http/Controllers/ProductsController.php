@@ -14,6 +14,7 @@ class ProductsController extends Controller
     public function index()
     {
         //
+        return Product::with('category')->get();
     }
 
     /**
@@ -30,14 +31,26 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required|string|max:45',
+            'price' => 'required|integer',
+            'status' => 'required|integer',
+            'description' => 'nullable|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $product = Product::create($request->all());
+        return response()->json($product, 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($id)
     {
         //
+        $product = Product::with('category')->findOrFail($id);
+        return response()->json($product);
     }
 
     /**
@@ -51,9 +64,20 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'name' => 'required|string|max:45',
+            'price' => 'required|integer',
+            'status' => 'required|integer',
+            'description' => 'nullable|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $product = Product::findOrFail($id);
+        $product->update($request->all());
+        return response()->json($product);
     }
 
     /**
@@ -62,5 +86,8 @@ class ProductsController extends Controller
     public function destroy(Product $product)
     {
         //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return response()->json(null, 204);
     }
 }

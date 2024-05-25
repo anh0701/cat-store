@@ -94,6 +94,9 @@ CREATE TABLE IF NOT EXISTS `cat_store`.`role` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+INSERT INTO `cat_store`.`role` (`name`) VALUES ('user');
+INSERT INTO `cat_store`.`role` (`name`) VALUES ('admin');
+
 
 -- -----------------------------------------------------
 -- Table `cat_store`.`users`
@@ -125,10 +128,13 @@ COLLATE = utf8mb4_unicode_ci;
 -- Table `cat_store`.`categories`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cat_store`.`categories` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+
+INSERT INTO `cat_store`.`categories` (`name`) VALUES ('Đồ chơi');
+INSERT INTO `cat_store`.`categories` (`name`) VALUES ('Đồ ăn');
 
 
 -- -----------------------------------------------------
@@ -155,7 +161,7 @@ ENGINE = InnoDB;
 -- Table `cat_store`.`orders`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cat_store`.`orders` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `phone` VARCHAR(10) NULL,
   `address` VARCHAR(225) NULL,
   `total` VARCHAR(45) NULL,
