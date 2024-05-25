@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->bigInteger('role_id')->nullable()->default(1)->index('fk_users_role_idx');
+            $table->bigInteger('role_id')->index('fk_users_role_idx');
         });
     }
 

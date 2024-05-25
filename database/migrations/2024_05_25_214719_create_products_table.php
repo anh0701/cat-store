@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigInteger('id', true);
             $table->string('name', 45);
-            $table->float('price');
-            $table->string('image', 45)->nullable();
-            $table->decimal('vote', 5, 0)->nullable();
-            $table->string('type', 45)->nullable()->default('"1kg", "500g", "1.5kg", "2kg", "2.5kg", "3kg"');
+            $table->bigInteger('price');
+            $table->tinyInteger('status');
+            $table->string('description')->nullable();
+            $table->bigInteger('categories_id')->index('fk_products_categories1_idx');
         });
     }
 
