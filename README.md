@@ -18,3 +18,8 @@
     php artisan migrate:generate;
     php artisan migrate:generate --tables="table1,table2,table3,table4,table5";
 ```
+
+5. create model, controller
+```sh
+    php artisan make:controller CustomersController --model=Customer
+```
