@@ -1,0 +1,18 @@
+[
+	{
+		"id" : 1,
+		"name" : "đồ chơi"
+	},
+	{
+		"id" : 2,
+		"name" : "đồ ăn"
+	},
+	{
+		"id" : 3,
+		"name" : "Vật dụng chăm sóc lông"
+	},
+	{
+		"id" : 4,
+		"name" : "phụ kiện"
+	}
+]

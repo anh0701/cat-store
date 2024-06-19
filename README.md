@@ -23,3 +23,13 @@
 ```sh
     php artisan make:controller CustomersController --model=Customer
 ```
+
+6.
+```sh
+    php artisan migrate:refresh
+```
+
+7. seeder
+```sh
+    php artisan db:seed
+```

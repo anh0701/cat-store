@@ -94,9 +94,6 @@ CREATE TABLE IF NOT EXISTS `cat_store`.`role` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-INSERT INTO `cat_store`.`role` (`name`) VALUES ('user');
-INSERT INTO `cat_store`.`role` (`name`) VALUES ('admin');
-
 
 -- -----------------------------------------------------
 -- Table `cat_store`.`users`
@@ -132,9 +129,6 @@ CREATE TABLE IF NOT EXISTS `cat_store`.`categories` (
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
-
-INSERT INTO `cat_store`.`categories` (`name`) VALUES ('Đồ chơi');
-INSERT INTO `cat_store`.`categories` (`name`) VALUES ('Đồ ăn');
 
 
 -- -----------------------------------------------------
@@ -180,7 +174,7 @@ ENGINE = InnoDB;
 -- Table `cat_store`.`products_orders`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cat_store`.`products_orders` (
-  `products_id` BIGINT NOT NULL,
+  `products_id` BIGINT NOT NULL AUTO_INCREMENT,
   `orders_id` BIGINT NOT NULL,
   INDEX `fk_product_order_products1_idx` (`products_id` ASC) VISIBLE,
   INDEX `fk_product_order_orders1_idx` (`orders_id` ASC) VISIBLE,

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products_orders', function (Blueprint $table) {
-            $table->bigInteger('products_id')->index('fk_product_order_products1_idx');
+            $table->bigInteger('products_id', true)->index('fk_product_order_products1_idx');
             $table->bigInteger('orders_id')->index('fk_product_order_orders1_idx');
         });
     }
