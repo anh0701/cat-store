@@ -3,6 +3,7 @@
 		"id" : 1,
 		"name" : "bàn cào móng",
 		"price" : 65000,
+		"number" : 1000,
 		"status" : 1,
 		"description" : null,
 		"categories_id" : 1
@@ -11,6 +12,7 @@
 		"id" : 2,
 		"name" : "bát ăn",
 		"price" : 25000,
+		"number" : 1000,
 		"status" : 1,
 		"description" : null,
 		"categories_id" : 4
@@ -19,6 +21,7 @@
 		"id" : 3,
 		"name" : "nhà vệ sinh",
 		"price" : 44800,
+		"number" : 1000,
 		"status" : 1,
 		"description" : null,
 		"categories_id" : 4
@@ -27,6 +30,7 @@
 		"id" : 4,
 		"name" : "ổ đệm mái vòm",
 		"price" : 395000,
+		"number" : 1000,
 		"status" : 1,
 		"description" : null,
 		"categories_id" : 4

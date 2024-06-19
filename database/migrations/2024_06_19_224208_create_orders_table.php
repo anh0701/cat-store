@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigInteger('id', true);
             $table->string('phone', 10)->nullable();
             $table->string('address', 225)->nullable();
+            $table->bigInteger('number');
             $table->string('total', 45)->nullable();
             $table->unsignedBigInteger('users_id')->index('fk_orders_users1_idx');
         });

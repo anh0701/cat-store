@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigInteger('id', true);
             $table->string('name', 45);
             $table->bigInteger('price');
+            $table->bigInteger('number');
             $table->tinyInteger('status');
             $table->string('description')->nullable();
             $table->bigInteger('categories_id')->index('fk_products_categories1_idx');
