@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->bigInteger('role_id')->index('fk_users_role_idx');
+            $table->bigInteger('role_id')->default(2)->index('fk_users_role_idx');
         });
     }
 
